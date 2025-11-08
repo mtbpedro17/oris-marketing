@@ -1,28 +1,235 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ORIS - Agência de Marketing Digital</title>
-      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>ORIS - Agência de Marketing Digital em Luanda</title>
+  <meta name="description" content="ORIS - Agência de Marketing Digital em Luanda. Especialistas em gestão de redes sociais, criação de sites e publicidade digital.">
+  <meta name="keywords" content="marketing digital, Angola, redes sociais, criação de sites, SEO, publicidade digital, Luanda">
+  <meta name="author" content="ORIS">
+  <meta property="og:title" content="ORIS - Agência de Marketing Digital">
+  <meta property="og:description" content="Transformamos ideias em resultados digitais">
+  <meta property="og:image" content="./logo.png">
+  <meta property="og:url" content="https://oris.com">
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     html {
       scroll-behavior: smooth;
     }
+    
+    /* Animações profissionais */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .fade-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .scale-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    /* Efeitos de cards profissionais */
+    .professional-card {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .professional-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .professional-card:hover::before {
+      left: 100%;
+    }
+    
+    .professional-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 215, 0, 0.3);
+    }
+    
+    /* Botões com gradiente profissional */
+    .gradient-btn {
+      background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    
+    .gradient-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .gradient-btn:hover::before {
+      left: 100%;
+    }
+    
+    .gradient-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+    }
+    
+    .outline-btn {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    
+    .outline-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .outline-btn:hover::before {
+      left: 100%;
+    }
+    
+    .outline-btn:hover {
+      background: #ffd700;
+      color: #000;
+      transform: translateY(-3px);
+    }
+    
+    /* Efeito de gradiente sutil no background */
+    .gradient-bg {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    }
+    
+    .section-gradient {
+      background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+    }
+    
+    /* Loading bar profissional */
+    .loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ffd700, #ffed4e, #ffd700);
+      z-index: 9999;
+      transition: width 0.4s ease;
+      opacity: 0;
+    }
+    
+    /* Efeito de brilho sutil nos ícones */
+    .icon-glow {
+      transition: all 0.3s ease;
+    }
+    
+    .icon-glow:hover {
+      filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+      transform: scale(1.1);
+    }
+    
+    /* Animação sutil para números */
+    .counter {
+      transition: all 0.6s ease;
+    }
+    
+    /* Efeito de parallax sutil */
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    /* Efeito de overlay gradiente */
+    .gradient-overlay {
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(26, 26, 26, 0.7) 100%);
+    }
+    
+    /* Animação de flutuação sutil */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    /* Efeito de borda gradiente */
+    .gradient-border {
+      position: relative;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, #1a1a1a, #2a2a2a) padding-box,
+                  linear-gradient(135deg, #ffd700, #ffed4e) border-box;
+    }
   </style>
 </head>
-<body class="bg-[url('./fundo.png')] bg-center bg-cover h-screen text-white">
+<body class="bg-black text-white">
+
+  <!-- Loading Bar -->
+  <div class="loading-bar" id="loadingBar"></div>
 
   <!-- CABEÇALHO -->
-  <header class="fixed top-0 left-0 w-full bg-black/5 backdrop-blur-md shadow-md z-50">
+  <header class="fixed top-0 left-0 w-full bg-black/95 backdrop-blur-lg shadow-2xl z-50 border-b border-gray-800">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-10 py-4">
-      <div>
-        <img src="./logo.png" alt="logo" class="w-24 sm:w-32 md:w-48">
+      <div class="fade-in-left">
+        <img src="./logo.png" alt="ORIS - Agência de Marketing Digital" class="w-24 sm:w-32 md:w-48 transition-transform duration-300 hover:scale-105">
       </div>
 
       <!-- Menu Mobile -->
       <div class="lg:hidden">
-        <button id="menu-toggle" class="text-white focus:outline-none">
+        <button id="menu-toggle" class="text-white focus:outline-none transition-transform duration-300 hover:scale-110">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -30,228 +237,459 @@
       </div>
 
       <!-- Menu Desktop -->
-      <nav id="main-nav" class="hidden lg:flex gap-4 xl:gap-6 font-semibold text-sm md:text-base">
-        <a href="#inicio" class="hover:text-amber-400 transition-all duration-300 ease-in-out py-2">PÁGINA INICIAL</a>
-        <a href="#servicos" class="hover:text-amber-400 transition-all duration-300 ease-in-out py-2">NOSSOS SERVIÇOS</a>
-        <a href="#sobre" class="hover:text-amber-400 transition-all duration-300 ease-in-out py-2">SOBRE NÓS</a>
-        <a href="#contato" class="hover:text-amber-400 transition-all duration-300 ease-in-out py-2">CONTACTOS</a>
+      <nav id="main-nav" class="hidden lg:flex gap-6 xl:gap-8 font-semibold text-sm md:text-base">
+        <a href="#inicio" class="relative py-2 group">
+          <span class="text-white group-hover:text-amber-400 transition-all duration-300">PÁGINA INICIAL</span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#servicos" class="relative py-2 group">
+          <span class="text-white group-hover:text-amber-400 transition-all duration-300">NOSSOS SERVIÇOS</span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#sobre" class="relative py-2 group">
+          <span class="text-white group-hover:text-amber-400 transition-all duration-300">SOBRE NÓS</span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#contato" class="relative py-2 group">
+          <span class="text-white group-hover:text-amber-400 transition-all duration-300">CONTACTOS</span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
       </nav>
 
+      <!-- CTA Header -->
+      <div class="hidden lg:block fade-in-right">
+        <button onclick="scrollToContato()" class="gradient-btn text-black px-6 py-3 rounded-lg font-semibold">
+          <i class="fas fa-calendar-check mr-2"></i>Orçamento Grátis
+        </button>
+      </div>
+
       <!-- Menu Mobile Expandido -->
-      <div id="mobile-menu" class="absolute top-full left-0 w-full bg-black/5 backdrop-blur-lg z-50 shadow-lg lg:hidden hidden">
-        <nav class="flex flex-col p-4">
-          <a href="#inicio" class="hover:text-amber-400 transition-all duration-300 ease-in-out py-3 border-b border-gray-700">PÁGINA INICIAL</a>
-          <a href="#servicos" class="hover:text-amber-400 transition-all duration-300 ease-in-out py-3 border-b border-gray-700">NOSSOS SERVIÇOS</a>
-          <a href="#sobre" class="hover:text-amber-400 transition-all duration-300 ease-in-out py-3 border-b border-gray-700">SOBRE NÓS</a>
-          <a href="#contato" class="hover:text-amber-400 transition-all duration-300 ease-in-out py-3">CONTACTOS</a>
+      <div id="mobile-menu" class="absolute top-full left-0 w-full bg-black/98 backdrop-blur-xl z-50 shadow-2xl lg:hidden hidden border-t border-gray-800">
+        <nav class="flex flex-col p-6">
+          <a href="#inicio" class="hover:text-amber-400 transition-all duration-300 py-4 border-b border-gray-800 group">
+            <i class="fas fa-home mr-3 group-hover:scale-110 transition-transform duration-300"></i>PÁGINA INICIAL
+          </a>
+          <a href="#servicos" class="hover:text-amber-400 transition-all duration-300 py-4 border-b border-gray-800 group">
+            <i class="fas fa-concierge-bell mr-3 group-hover:scale-110 transition-transform duration-300"></i>NOSSOS SERVIÇOS
+          </a>
+          <a href="#sobre" class="hover:text-amber-400 transition-all duration-300 py-4 border-b border-gray-800 group">
+            <i class="fas fa-users mr-3 group-hover:scale-110 transition-transform duration-300"></i>SOBRE NÓS
+          </a>
+          <a href="#contato" class="hover:text-amber-400 transition-all duration-300 py-4 border-b border-gray-800 group">
+            <i class="fas fa-phone mr-3 group-hover:scale-110 transition-transform duration-300"></i>CONTACTOS
+          </a>
+          <button onclick="scrollToContato()" class="gradient-btn text-black px-6 py-4 rounded-lg font-semibold mt-6">
+            <i class="fas fa-calendar-check mr-2"></i>Orçamento Grátis
+          </button>
         </nav>
       </div>
     </div>
   </header>
-  <!-- FIM CABEÇALHO -->
 
   <!-- SEÇÃO INÍCIO -->
-  <section id="inicio" class="h-screen flex items-center justify-center bg-[url('/img/fundo.png')] bg-cover bg-center pt-16">
-    <div class="bg-black/5 backdrop-blur-sm rounded-2xl p-6 mx-4 h-[400px]  sm:mx-6 w-full max-w-4xl flex flex-col items-center justify-center text-center">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-amber-400 mb-4">Bem-vindo à Oris</h1>
-      <p class="text-base sm:text-lg md:text-xl text-gray-200">Transformamos ideias em resultados digitais 🚀</p>
+  <section id="inicio" class="min-h-screen flex items-center justify-center gradient-bg pt-16 relative overflow-hidden">
+    <div class="absolute inset-0 gradient-overlay"></div>
+    
+    <div class="relative z-10 w-full max-w-6xl mx-4 sm:mx-6 flex flex-col items-center justify-center text-center">
+      <div class="text-amber-400 mb-8 float-animation">
+        <i class="fas fa-rocket text-6xl sm:text-7xl"></i>
+      </div>
+      
+      <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-amber-400 mb-8 fade-in-up">
+        ORIS
+      </h1>
+      
+      <div class="relative mb-8">
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-20 blur-lg"></div>
+        <p class="text-2xl sm:text-3xl md:text-4xl text-gray-200 relative z-10 fade-in-up">
+          Transformamos ideias em <span class="text-amber-400 font-semibold">resultados digitais</span>
+        </p>
+      </div>
+      
+      <p class="text-lg sm:text-xl text-gray-300 mb-12 max-w-3xl leading-relaxed fade-in-up">
+        Somos a sua agência de marketing digital em Luanda, especializada em criar estratégias que geram crescimento real e mensurável para o seu negócio.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center fade-in-up">
+        <button onclick="scrollToContato()" class="gradient-btn text-black px-10 py-4 rounded-xl font-semibold text-lg">
+          <i class="fas fa-paper-plane mr-3"></i>Solicitar Orçamento
+        </button>
+        <button onclick="scrollToServicos()" class="outline-btn border-2 border-amber-400 text-amber-400 px-10 py-4 rounded-xl font-semibold text-lg">
+          <i class="fas fa-search mr-3"></i>Conhecer Serviços
+        </button>
+      </div>
+      
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 fade-in-up">
+        <div class="animate-bounce">
+          <i class="fas fa-chevron-down text-amber-400 text-2xl"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDICADORES DE CONFIANÇA -->
+  <section class="py-20 section-gradient relative overflow-hidden">
+    <div class="max-w-7xl mx-auto text-center relative z-10">
+      <h3 class="text-3xl font-bold text-white mb-16 fade-in-up">
+        <i class="fas fa-chart-line mr-4 text-amber-400"></i>Confiança e Resultados Comprovados
+      </h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="fade-in-up">
+          <div class="text-4xl font-bold text-amber-400 mb-2 counter" data-target="50">
+            <i class="fas fa-users mr-3"></i><span>0</span>+
+          </div>
+          <div class="text-gray-300 text-lg">Clientes Satisfeitos</div>
+        </div>
+        <div class="fade-in-up">
+          <div class="text-4xl font-bold text-amber-400 mb-2 counter" data-target="100">
+            <i class="fas fa-project-diagram mr-3"></i><span>0</span>+
+          </div>
+          <div class="text-gray-300 text-lg">Projetos Concluídos</div>
+        </div>
+        <div class="fade-in-up">
+          <div class="text-4xl font-bold text-amber-400 mb-2 counter" data-target="3">
+            <i class="fas fa-calendar-alt mr-3"></i><span>0</span>+
+          </div>
+          <div class="text-gray-300 text-lg">Anos de Experiência</div>
+        </div>
+        <div class="fade-in-up">
+          <div class="text-4xl font-bold text-amber-400 mb-2">
+            <i class="fas fa-headset mr-3"></i>24/7
+          </div>
+          <div class="text-gray-300 text-lg">Suporte</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- SEÇÃO SERVIÇOS -->
-  <section id="servicos" class="min-h-screen flex flex-col items-center justify-center bg-[#1A1A1A] text-white px-4 sm:px-6 py-16 lg:py-20">
-    <div class="max-w-7xl w-full flex flex-col items-center">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-amber-400 text-center">Nossos Serviços</h2>
-      <p class="max-w-2xl text-center text-gray-300 mb-12 mx-auto px-4">
-        Oferecemos soluções completas em marketing digital, com foco em resultados, inovação e performance.
+  <section id="servicos" class="min-h-screen flex flex-col items-center justify-center gradient-bg py-20 relative overflow-hidden">
+    <div class="max-w-7xl w-full flex flex-col items-center relative z-10">
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-amber-400 text-center fade-in-up">
+        <i class="fas fa-concierge-bell mr-6"></i>Nossos Serviços
+      </h2>
+      <p class="max-w-3xl text-center text-gray-300 mb-16 mx-auto px-4 text-lg leading-relaxed fade-in-up">
+        Oferecemos soluções completas em marketing digital, com foco em resultados, inovação e performance mensurável para o seu negócio.
       </p>
 
       <!--GRID DE SERVIÇOS -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
         
         <!-- Card 1 -->
-        <div class="bg-[#2A2A2A] rounded-2xl p-6 text-center shadow-lg hover:shadow-amber-400/30 hover:-translate-y-2 transition-all duration-300">
-          <div class="text-4xl lg:text-5xl mb-4">📱</div>
-          <h3 class="text-xl lg:text-2xl font-semibold text-amber-400 mb-3">Gestão de Redes Sociais</h3>
-          <p class="text-gray-300 text-sm lg:text-base">
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 text-center gradient-border fade-in-left">
+          <div class="text-5xl mb-6 text-amber-400 icon-glow">
+            <i class="fas fa-hashtag"></i>
+          </div>
+          <h3 class="text-2xl font-semibold text-amber-400 mb-4">Gestão de Redes Sociais</h3>
+          <p class="text-gray-300 text-base mb-6 leading-relaxed">
             Criamos e gerimos conteúdos estratégicos para fortalecer a presença da tua marca nas redes sociais.
           </p>
+          <ul class="text-gray-400 text-sm text-left space-y-3">
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Conteúdo estratégico personalizado</li>
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Gestão de comunidade</li>
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Relatórios de performance</li>
+          </ul>
         </div>
 
         <!-- Card 2 -->
-        <div class="bg-[#2A2A2A] rounded-2xl p-6 text-center shadow-lg hover:shadow-amber-400/30 hover:-translate-y-2 transition-all duration-300">
-          <div class="text-4xl lg:text-5xl mb-4">🎯</div>
-          <h3 class="text-xl lg:text-2xl font-semibold text-amber-400 mb-3">Publicidade Digital</h3>
-          <p class="text-gray-300 text-sm lg:text-base">
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 text-center gradient-border fade-in-up">
+          <div class="text-5xl mb-6 text-amber-400 icon-glow">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <h3 class="text-2xl font-semibold text-amber-400 mb-4">Publicidade Digital</h3>
+          <p class="text-gray-300 text-base mb-6 leading-relaxed">
             Campanhas eficazes no Google, Facebook e Instagram Ads, com foco em conversões e retorno financeiro.
           </p>
+          <ul class="text-gray-400 text-sm text-left space-y-3">
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Google Ads & Meta Ads</li>
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Campanhas por conversão</li>
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Otimização contínua</li>
+          </ul>
         </div>
 
         <!-- Card 3 -->
-        <div class="bg-[#2A2A2A] rounded-2xl p-6 text-center shadow-lg hover:shadow-amber-400/30 hover:-translate-y-2 transition-all duration-300">
-          <div class="text-4xl lg:text-5xl mb-4">💡</div>
-          <h3 class="text-xl lg:text-2xl font-semibold text-amber-400 mb-3">Branding e Identidade</h3>
-          <p class="text-gray-300 text-sm lg:text-base">
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 text-center gradient-border fade-in-right">
+          <div class="text-5xl mb-6 text-amber-400 icon-glow">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3 class="text-2xl font-semibold text-amber-400 mb-4">Branding e Identidade</h3>
+          <p class="text-gray-300 text-base mb-6 leading-relaxed">
             Desenvolvemos logotipos e identidades visuais únicas que refletem o propósito e a essência da tua marca.
           </p>
+          <ul class="text-gray-400 text-sm text-left space-y-3">
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Logotipo profissional</li>
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Manual de identidade visual</li>
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Branding estratégico</li>
+          </ul>
         </div>
 
         <!-- Card 4 -->
-        <div class="bg-[#2A2A2A] rounded-2xl p-6 text-center shadow-lg hover:shadow-amber-400/30 hover:-translate-y-2 transition-all duration-300">
-          <div class="text-4xl lg:text-5xl mb-4">🌐</div>
-          <h3 class="text-xl lg:text-2xl font-semibold text-amber-400 mb-3">Criação de Sites</h3>
-          <p class="text-gray-300 text-sm lg:text-base">
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 text-center gradient-border fade-in-left">
+          <div class="text-5xl mb-6 text-amber-400 icon-glow">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3 class="text-2xl font-semibold text-amber-400 mb-4">Criação de Sites</h3>
+          <p class="text-gray-300 text-base mb-6 leading-relaxed">
             Websites modernos, rápidos e responsivos para destacar a tua empresa no mundo digital.
           </p>
+          <ul class="text-gray-400 text-sm text-left space-y-3">
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Design responsivo</li>
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Otimização SEO</li>
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Integração com redes sociais</li>
+          </ul>
         </div>
 
         <!-- Card 5 -->
-        <div class="bg-[#2A2A2A] rounded-2xl p-6 text-center shadow-lg hover:shadow-amber-400/30 hover:-translate-y-2 transition-all duration-300">
-          <div class="text-4xl lg:text-5xl mb-4">📊</div>
-          <h3 class="text-xl lg:text-2xl font-semibold text-amber-400 mb-3">SEO e Otimização</h3>
-          <p class="text-gray-300 text-sm lg:text-base">
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 text-center gradient-border fade-in-up">
+          <div class="text-5xl mb-6 text-amber-400 icon-glow">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3 class="text-2xl font-semibold text-amber-400 mb-4">SEO e Otimização</h3>
+          <p class="text-gray-300 text-base mb-6 leading-relaxed">
             Melhoramos o posicionamento do teu site nos motores de busca, aumentando a visibilidade e o tráfego orgânico.
           </p>
+          <ul class="text-gray-400 text-sm text-left space-y-3">
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Auditoria técnica SEO</li>
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Otimização on-page</li>
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Link building estratégico</li>
+          </ul>
         </div>
 
         <!-- Card 6 -->
-        <div class="bg-[#2A2A2A] rounded-2xl p-6 text-center shadow-lg hover:shadow-amber-400/30 hover:-translate-y-2 transition-all duration-300">
-          <div class="text-4xl lg:text-5xl mb-4">📈</div>
-          <h3 class="text-xl lg:text-2xl font-semibold text-amber-400 mb-3">Consultoria Estratégica</h3>
-          <p class="text-gray-300 text-sm lg:text-base">
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 text-center gradient-border fade-in-right">
+          <div class="text-5xl mb-6 text-amber-400 icon-glow">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="text-2xl font-semibold text-amber-400 mb-4">Consultoria Estratégica</h3>
+          <p class="text-gray-300 text-base mb-6 leading-relaxed">
             Ajudamos a definir metas, planejar campanhas e traçar estratégias que impulsionam o teu negócio.
           </p>
+          <ul class="text-gray-400 text-sm text-left space-y-3">
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Plano de marketing digital</li>
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Análise de concorrência</li>
+            <li class="flex items-center"><i class="fas fa-check text-amber-400 mr-3"></i>Métricas e KPIs</li>
+          </ul>
         </div>
 
+      </div>
+
+      <!-- CTA Serviços -->
+      <div class="text-center mt-16 fade-in-up">
+        <button onclick="scrollToContato()" class="gradient-btn text-black px-12 py-5 rounded-xl font-semibold text-lg">
+          <i class="fas fa-play mr-3"></i>Começar Meu Projeto
+        </button>
       </div>
     </div>
   </section>
 
   <!-- SEÇÃO SOBRE -->
-  <section id="sobre" class="min-h-screen flex flex-col items-center justify-center bg-[#111] text-white px-4 sm:px-6 py-16 lg:py-20 relative overflow-hidden">
-
-    <!-- Fundo decorativo com brilho -->
-    <div class="absolute inset-0 bg-linear-to-t from-black via-transparent to-black opacity-50"></div>
+  <section id="sobre" class="min-h-screen flex flex-col items-center justify-center section-gradient py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-black/80 via-transparent to-black/60"></div>
 
     <div class="relative z-10 max-w-7xl w-full text-center flex flex-col items-center">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 text-amber-400 tracking-wide">Sobre Nós</h2>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-12 text-amber-400 tracking-wide fade-in-up">
+        <i class="fas fa-users mr-6"></i>Sobre Nós
+      </h2>
 
-      <p class="text-base lg:text-lg text-gray-300 mb-10 leading-relaxed max-w-4xl mx-auto px-4">
+      <p class="text-xl text-gray-300 mb-16 leading-relaxed max-w-4xl mx-auto px-4 fade-in-up">
         Na <span class="text-amber-400 font-semibold">Oris</span>, acreditamos que cada marca tem uma história única.  
         A nossa missão é contar essa história da forma mais autêntica e impactante possível.  
         Trabalhamos com paixão, estratégia e criatividade para transformar ideias em resultados reais.
       </p>
 
+      <!-- Valores -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-6xl">
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 gradient-border fade-in-left">
+          <div class="text-4xl text-amber-400 mb-6 icon-glow">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <h3 class="text-2xl font-semibold text-white mb-4">Missão</h3>
+          <p class="text-gray-300 leading-relaxed">Impulsionar negócios através de soluções digitais inovadoras e resultados mensuráveis.</p>
+        </div>
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 gradient-border fade-in-up">
+          <div class="text-4xl text-amber-400 mb-6 icon-glow">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3 class="text-2xl font-semibold text-white mb-4">Visão</h3>
+          <p class="text-gray-300 leading-relaxed">Ser a agência de referência em marketing digital em Angola até 2027.</p>
+        </div>
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 gradient-border fade-in-right">
+          <div class="text-4xl text-amber-400 mb-6 icon-glow">
+            <i class="fas fa-gem"></i>
+          </div>
+          <h3 class="text-2xl font-semibold text-white mb-4">Valores</h3>
+          <p class="text-gray-300 leading-relaxed">Transparência, inovação, excelência e parceria com nossos clientes.</p>
+        </div>
+      </div>
+
       <!-- Equipe -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 mt-12 max-w-7xl mx-auto">
+      <h3 class="text-3xl font-bold text-white mb-12 fade-in-up">
+        <i class="fas fa-user-tie mr-4"></i>Nossa Equipe
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         
         <!-- Card 1 -->
-        <div class="bg-[#1f1f1f] rounded-2xl p-6 shadow-lg hover:shadow-amber-400/20 hover:-translate-y-2 transition-all duration-300">
-          <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Membro da equipe" class="w-20 lg:w-24 mx-auto mb-4 rounded-full border-2 border-amber-400">
-          <h3 class="text-lg lg:text-xl font-semibold text-amber-400">Pedro Calala</h3>
-          <p class="text-gray-400 text-sm">CEO & Fundador</p>
-          <p class="mt-3 text-gray-300 text-sm lg:text-base">Lidera a visão estratégica da Oris com foco em inovação e impacto digital.</p>
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 gradient-border scale-in">
+          <img src="img_1.jpeg" 
+               alt="Foto de Pedro Calala - CEO da ORIS" 
+               class="w-24 h-24 mx-auto mb-6 rounded-full border-2 border-amber-400 object-cover">
+          <h3 class="text-xl font-semibold text-amber-400 mb-2">
+            <i class="fas fa-crown mr-3"></i>Pedro Calala
+          </h3>
+          <p class="text-gray-400 text-lg mb-4">CEO & Fundador</p>
+          <p class="text-gray-300 leading-relaxed">Lidera a visão estratégica da Oris com foco em inovação e impacto digital.</p>
         </div>
 
         <!-- Card 2 -->
-        <div class="bg-[#1f1f1f] rounded-2xl p-6 shadow-lg hover:shadow-amber-400/20 hover:-translate-y-2 transition-all duration-300">
-          <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Membro da equipe" class="w-20 lg:w-24 mx-auto mb-4 rounded-full border-2 border-amber-400">
-          <h3 class="text-lg lg:text-xl font-semibold text-amber-400">José Dala</h3>
-          <p class="text-gray-400 text-sm">Diretor de Criação</p>
-          <p class="mt-3 text-gray-300 text-sm lg:text-base">Responsável por transformar conceitos em campanhas visuais poderosas.</p>
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 gradient-border scale-in">
+          <img src="img_2.jpeg" 
+               alt="Foto de José Dala - Diretor de Criação da ORIS" 
+               class="w-24 h-24 mx-auto mb-6 rounded-full border-2 border-amber-400 object-cover">
+          <h3 class="text-xl font-semibold text-amber-400 mb-2">
+            <i class="fas fa-paint-brush mr-3"></i>José Dala
+          </h3>
+          <p class="text-gray-400 text-lg mb-4">Diretor de Criação</p>
+          <p class="text-gray-300 leading-relaxed">Responsável por transformar conceitos em campanhas visuais poderosas.</p>
         </div>
 
         <!-- Card 3 -->
-        <div class="bg-[#1f1f1f] rounded-2xl p-6 shadow-lg hover:shadow-amber-400/20 hover:-translate-y-2 transition-all duration-300">
-          <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Membro da equipe" class="w-20 lg:w-24 mx-auto mb-4 rounded-full border-2 border-amber-400">
-          <h3 class="text-lg lg:text-xl font-semibold text-amber-400">Rui Loth</h3>
-          <p class="text-gray-400 text-sm">Gestor de Projetos</p>
-          <p class="mt-3 text-gray-300 text-sm lg:text-base">Coordena campanhas e garante que cada cliente alcance seus objetivos.</p>
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 gradient-border scale-in">
+          <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=200&h=200&fit=crop&crop=face" 
+               alt="Foto de Rui Loth - Gestor de Projetos da ORIS" 
+               class="w-24 h-24 mx-auto mb-6 rounded-full border-2 border-amber-400 object-cover">
+          <h3 class="text-xl font-semibold text-amber-400 mb-2">
+            <i class="fas fa-tasks mr-3"></i>Rui Loth
+          </h3>
+          <p class="text-gray-400 text-lg mb-4">Gestor de Projetos</p>
+          <p class="text-gray-300 leading-relaxed">Coordena campanhas e garante que cada cliente alcance seus objetivos.</p>
         </div>
 
       </div>
 
       <!-- Frase de impacto -->
-      <p class="mt-12 lg:mt-16 text-lg lg:text-xl italic text-gray-300 max-w-2xl mx-auto px-4">
-        "Na Oris, criamos valor e geramos prosperidade."
+      <p class="mt-16 text-xl italic text-gray-300 max-w-2xl mx-auto px-4 fade-in-up">
+        <i class="fas fa-quote-left text-amber-400 mr-4 text-2xl"></i>
+        Na Oris, não apenas criamos campanhas - construímos legados digitais que geram prosperidade real.
+        <i class="fas fa-quote-right text-amber-400 ml-4 text-2xl"></i>
       </p>
     </div>
   </section>
 
   <!-- SEÇÃO CONTATO -->
-  <section id="contato" class="min-h-screen flex flex-col items-center justify-center bg-[#111] text-white px-4 sm:px-6 py-16 lg:py-20 relative overflow-hidden">
+  <section id="contato" class="min-h-screen flex flex-col items-center justify-center gradient-bg py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/80"></div>
 
-    <!-- Fundo com leve brilho -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-50"></div>
+    <div class="relative z-10 max-w-6xl w-full text-center flex flex-col items-center">
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-12 text-amber-400 tracking-wide fade-in-up">
+        <i class="fas fa-phone-alt mr-6"></i>Entre em Contato
+      </h2>
 
-    <div class="relative z-10 max-w-4xl w-full text-center flex flex-col items-center">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 text-amber-400 tracking-wide">Entre em Contato</h2>
-
-      <p class="text-gray-300 text-base lg:text-lg mb-12 max-w-2xl mx-auto px-4">
+      <p class="text-xl text-gray-300 mb-16 max-w-2xl mx-auto px-4 fade-in-up">
         Tem alguma dúvida, proposta ou quer trabalhar connosco?  
         Envie uma mensagem ou fale diretamente pelas redes abaixo.
       </p>
 
-      <!-- Redes Sociais -->
-      <div class="flex justify-center gap-4 lg:gap-6 mb-12">
-        <!-- Facebook -->
-        <a href="https://facebook.com" target="_blank" class="hover:scale-110 transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-7 lg:w-8 h-7 lg:h-8 fill-gray-300 hover:fill-blue-500 transition-all duration-300">
-            <path d="M279.14 288l14.22-92.66h-88.91V127.78c0-25.35 12.42-50.06 52.24-50.06H295V6.26S259.91 0 225.36 0C141.09 0 89.09 54.42 89.09 154.22V195.3H0v92.7h89.09V512h107.75V288z"/>
-          </svg>
-        </a>
-
-        <!-- Instagram -->
-        <a href="https://instagram.com" target="_blank" class="hover:scale-110 transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-7 lg:w-8 h-7 lg:h-8 fill-gray-300 hover:fill-pink-500 transition-all duration-300">
-            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9S160.5 370.8 224.1 370.8 339 319.5 339 255.9 287.7 141 224.1 141zm0 188.1c-40.3 0-73.1-32.7-73.1-73.1s32.7-73.1 73.1-73.1 73.1 32.7 73.1 73.1-32.7 73.1-73.1 73.1zm146.4-194.3c0 14.9-12.1 27-27 27-14.9 0-27-12.1-27-27s12.1-27 27-27 27 12.1 27 27zm76.1 27.2c-.5-35.7-9.9-67.3-36.1-93.5s-57.8-35.6-93.5-36.1C297.7 32 150.3 32 97.1 32c-35.7.5-67.3 9.9-93.5 36.1S-32 126.8-32.5 162.5C-33 215.7-33 362.9-32.5 416c.5 35.7 9.9 67.3 36.1 93.5s57.8 35.6 93.5 36.1c53.2.5 200.4.5 253.6 0 35.7-.5 67.3-9.9 93.5-36.1s35.6-57.8 36.1-93.5c.5-53.2.5-200.4 0-253.6zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.6 102.7-9 132.1z"/>
-          </svg>
-        </a>
-
-        <!-- LinkedIn -->
-        <a href="https://linkedin.com" target="_blank" class="hover:scale-110 transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-7 lg:w-8 h-7 lg:h-8 fill-gray-300 hover:fill-blue-400 transition-all duration-300">
-            <path d="M100.28 448H7.4V148.9h92.88zm-46.44-340C24.3 108 0 83.7 0 53.6S24.3 0 53.6 0s53.6 24.3 53.6 53.6-24.3 54.4-53.36 54.4zM447.9 448h-92.68V302.4c0-34.7-12.4-58.4-43.2-58.4-23.5 0-37.5 15.8-43.6 31.1-2.3 5.4-2.9 12.9-2.9 20.5V448h-92.8s1.2-239.6 0-264.6h92.8v37.5c-0.2 0.3-0.4 0.7-0.6 1h0.6v-1c12.3-19 34.3-46.3 83.4-46.3 60.9 0 106.6 39.8 106.6 125.3V448z"/>
-          </svg>
-        </a>
-
-        <!-- WhatsApp -->
-        <a href="https://wa.me/244900000000" target="_blank" class="hover:scale-110 transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-7 lg:w-8 h-7 lg:h-8 fill-gray-300 hover:fill-green-500 transition-all duration-300">
-            <path d="M380.9 97.1C339-11.6 208.3-33.6 119.1 24.5S-4.6 214.3 37.3 323c22.9 59.8 69.9 104.7 129.8 124.6l-14.7 48.5c-2.1 6.8 4.6 13.1 11.3 10.3l52.2-21.2c97.7 26.7 203.3-15.2 254.8-105.1 45.1-78.5 28.3-180.5-33.8-248zM224 438.7c-94.2 0-170.7-76.5-170.7-170.7S129.8 97.3 224 97.3 394.7 173.8 394.7 268 318.2 438.7 224 438.7zm97.2-129.3c-5.2-2.6-30.6-15.1-35.3-16.8-4.7-1.7-8.1-2.6-11.5 2.6s-13.2 16.8-16.1 20.4c-3 3.5-5.9 4-11 1.3-30.6-15.3-50.7-27.3-71.1-61.9-5.4-9.3 5.4-8.6 15.3-28.5 1.7-3.5.9-6.5-.4-9.1-1.3-2.6-11.5-27.8-15.7-38.1-4.1-9.9-8.3-8.5-11.5-8.7-3-.2-6.5-.2-10-.2s-9.1 1.3-13.8 6.5c-4.7 5.2-18.1 17.7-18.1 43.1s18.5 50.2 21 53.7c2.6 3.5 36.3 55.6 88.1 78 51.8 22.4 51.8 15 61.1 14.1s30.1-12.3 34.3-24.2c4.2-11.8 4.2-21.8 2.9-23.9-1.2-2.1-4.8-3.5-10-6.1z"/>
-          </svg>
-        </a>
-      </div>
-
-      <!-- Formulário de Feedback -->
-      <form action="#" method="post" class="bg-[#1f1f1f]/80 p-6 lg:p-8 rounded-2xl shadow-lg max-w-2xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-          <input type="text" name="nome" placeholder="Seu nome" required
-            class="p-3 rounded-lg bg-[#2A2A2A] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all w-full">
-          
-          <input type="email" name="email" placeholder="Seu e-mail" required
-            class="p-3 rounded-lg bg-[#2A2A2A] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all w-full">
+      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl">
+        
+        <!-- Formulário de Contato -->
+        <div class="professional-card bg-[#1a1a1a] rounded-2xl p-10 gradient-border fade-in-left">
+          <h3 class="text-3xl font-bold text-amber-400 mb-8">
+            <i class="fas fa-envelope mr-4"></i>Envie sua Mensagem
+          </h3>
+          <form class="space-y-6" id="contact-form">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="relative">
+                <i class="fas fa-user absolute left-4 top-4 text-gray-400 text-lg"></i>
+                <input type="text" placeholder="Seu nome" class="bg-[#2a2a2a] rounded-xl p-4 pl-12 text-white focus:outline-none focus:ring-2 focus:ring-amber-400 w-full transition-all duration-300" required>
+              </div>
+              <div class="relative">
+                <i class="fas fa-envelope absolute left-4 top-4 text-gray-400 text-lg"></i>
+                <input type="email" placeholder="Seu email" class="bg-[#2a2a2a] rounded-xl p-4 pl-12 text-white focus:outline-none focus:ring-2 focus:ring-amber-400 w-full transition-all duration-300" required>
+              </div>
+            </div>
+            <div class="relative">
+              <i class="fas fa-tag absolute left-4 top-4 text-gray-400 text-lg"></i>
+              <input type="text" placeholder="Assunto" class="bg-[#2a2a2a] rounded-xl p-4 pl-12 text-white w-full focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all duration-300" required>
+            </div>
+            <div class="relative">
+              <i class="fas fa-comment absolute left-4 top-4 text-gray-400 text-lg"></i>
+              <textarea placeholder="Sua mensagem" rows="6" class="bg-[#2a2a2a] rounded-xl p-4 pl-12 text-white w-full focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all duration-300" required></textarea>
+            </div>
+            <button type="submit" class="gradient-btn text-black px-8 py-4 rounded-xl font-semibold text-lg w-full">
+              <i class="fas fa-paper-plane mr-3"></i>Enviar Mensagem
+            </button>
+          </form>
         </div>
 
-        <textarea name="mensagem" rows="4" placeholder="Escreva sua mensagem..." required
-          class="w-full mt-4 lg:mt-6 p-3 rounded-lg bg-[#2A2A2A] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"></textarea>
+        <!-- Informações de Contato -->
+        <div class="space-y-8">
+          
+          <!-- Redes Sociais -->
+          <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 gradient-border fade-in-right">
+            <h3 class="text-3xl font-bold text-amber-400 mb-8">
+              <i class="fas fa-share-alt mr-4"></i>Nossas Redes
+            </h3>
+            <div class="flex justify-center gap-6 mb-8">
+              <!-- Facebook -->
+              <a href="https://facebook.com/orisangola" target="_blank" class="bg-blue-600 p-5 rounded-full icon-glow transition-all duration-300 hover:scale-110">
+                <i class="fab fa-facebook-f text-white text-2xl"></i>
+              </a>
 
-        <button type="submit"
-          class="mt-6 bg-amber-400 hover:bg-amber-500 text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 w-full lg:w-auto">
-          Enviar Mensagem
-        </button>
-      </form>
+              <!-- Instagram -->
+              <a href="https://instagram.com/orisangola" target="_blank" class="bg-gradient-to-br from-purple-600 to-pink-600 p-5 rounded-full icon-glow transition-all duration-300 hover:scale-110">
+                <i class="fab fa-instagram text-white text-2xl"></i>
+              </a>
 
-      <!-- Informações extras -->
-      <div class="mt-8 lg:mt-12 text-gray-400 text-sm lg:text-base">
-        <p>📍 Luanda, Angola</p>
-        <p>✉️ contato@oris.com | 📞 +244 900 000 000</p>
+              <!-- LinkedIn -->
+              <a href="https://linkedin.com/company/orisangola" target="_blank" class="bg-blue-400 p-5 rounded-full icon-glow transition-all duration-300 hover:scale-110">
+                <i class="fab fa-linkedin-in text-white text-2xl"></i>
+              </a>
+
+              <!-- WhatsApp -->
+              <a href="https://wa.me/244900000000" target="_blank" class="bg-green-500 p-5 rounded-full icon-glow transition-all duration-300 hover:scale-110">
+                <i class="fab fa-whatsapp text-white text-2xl"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Informações de Contato -->
+          <div class="professional-card bg-[#1a1a1a] rounded-2xl p-8 gradient-border fade-in-up">
+            <h3 class="text-3xl font-bold text-amber-400 mb-8">
+              <i class="fas fa-info-circle mr-4"></i>Informações
+            </h3>
+            <div class="space-y-6 text-gray-300 text-left text-lg">
+              <p class="flex items-center gap-4">
+                <i class="fas fa-map-marker-alt text-amber-400 text-xl w-6"></i>
+                Luanda, Angola
+              </p>
+              <p class="flex items-center gap-4">
+                <i class="fas fa-envelope text-amber-400 text-xl w-6"></i>
+                contato@oris.com
+              </p>
+              <p class="flex items-center gap-4">
+                <i class="fas fa-phone text-amber-400 text-xl w-6"></i>
+                +244 900 000 000
+              </p>
+              <p class="flex items-center gap-4">
+                <i class="fas fa-clock text-amber-400 text-xl w-6"></i>
+                Seg - Sex: 8h00 - 18h00
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Rodapé -->
-    <footer class="relative z-10 mt-12 lg:mt-20 text-center text-gray-500 text-sm lg:text-base w-full">
-      <p>&copy; 2025 <span class="text-amber-400 font-semibold">Oris</span> — Todos os direitos reservados.</p>
+    <footer class="relative z-10 mt-16 text-center text-gray-400 text-lg w-full fade-in-up">
+      <p class="mb-4">
+        <i class="fas fa-copyright mr-3"></i>
+        2025 <span class="text-amber-400 font-semibold">Oris Marketing Digital</span> — Todos os direitos reservados.
+      </p>
+      <p>
+        <i class="fas fa-id-card mr-3"></i>CNI: 123456789 | NIF: 987654321
+      </p>
     </footer>
   </section>
 
@@ -274,6 +712,134 @@
       if (window.innerWidth >= 1024) {
         document.getElementById('mobile-menu').classList.add('hidden');
       }
+    });
+
+    // Scroll para seções
+    function scrollToContato() {
+      document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function scrollToServicos() {
+      document.getElementById('servicos').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Animações scroll com diferentes efeitos
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 100);
+        }
+      });
+    }, observerOptions);
+
+    // Observar todos os elementos com classes de animação
+    document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Loading bar durante o scroll
+    window.addEventListener('scroll', function() {
+      const winHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.pageYOffset;
+      const trackLength = docHeight - winHeight;
+      const progress = Math.floor(scrollTop / trackLength * 100);
+      
+      const loadingBar = document.getElementById('loadingBar');
+      loadingBar.style.width = progress + '%';
+      loadingBar.style.opacity = progress > 0 && progress < 100 ? '1' : '0';
+    });
+
+    // Animação de contagem para números
+    function startCounters() {
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const count = counter.querySelector('span');
+        let current = 0;
+        const increment = target / 100;
+        
+        const updateCount = () => {
+          if (current < target) {
+            current += increment;
+            count.textContent = Math.floor(current);
+            setTimeout(updateCount, 20);
+          } else {
+            count.textContent = target;
+          }
+        };
+        
+        updateCount();
+      });
+    }
+
+    // Observar quando a seção de contadores estiver visível
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startCounters();
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    });
+
+    // Observar a seção de indicadores
+    const indicatorsSection = document.querySelector('.section-gradient');
+    if (indicatorsSection) {
+      counterObserver.observe(indicatorsSection);
+    }
+
+    // Form submission profissional
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Efeito de loading no botão
+      const button = this.querySelector('button');
+      const originalText = button.innerHTML;
+      button.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i>Enviando...';
+      button.disabled = true;
+      
+      setTimeout(() => {
+        // Simular envio bem-sucedido
+        const successMessage = document.createElement('div');
+        successMessage.className = 'bg-green-600 text-white p-4 rounded-xl mt-4 fade-in-up';
+        successMessage.innerHTML = '<i class="fas fa-check mr-2"></i> Mensagem enviada com sucesso! Entraremos em contacto em breve.';
+        this.parentNode.appendChild(successMessage);
+        
+        this.reset();
+        button.innerHTML = originalText;
+        button.disabled = false;
+        
+        setTimeout(() => {
+          successMessage.remove();
+        }, 5000);
+      }, 2000);
+    });
+
+    // Loading inicial
+    window.addEventListener('load', function() {
+      document.body.classList.add('loaded');
+      setTimeout(() => {
+        document.getElementById('loadingBar').style.opacity = '0';
+      }, 1000);
+    });
+
+    // Efeito de hover profissional para links do menu
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-2px)';
+      });
+      
+      link.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
     });
   </script>
 
